@@ -1,0 +1,21 @@
+MATCHDAY LAB | Emeka Olisa • Senior project
+1. Extract the entire ZIP to a NEW folder. Keep the original demo unchanged.
+2. Windows: double-click Start Matchday Lab.bat. Python and internet are needed for first-time setup. If you prefer, open cmd in this folder and run:
+   py -m pip install -r requirements.txt
+   py -m streamlit run app.py
+3. If the browser doesn't open, copy the Local URL from the window. Keep the window open. Ctrl+C stops the app.
+Mac: in Terminal in this folder run python3 -m pip install -r requirements.txt then python3 -m streamlit run app.py (use a virtual environment if needed).
+
+Two-minute presentation:
+1. Open Matchweek Finder. Pick Arsenal or browse all clubs. Select a calendar week, sort by Closest call, and choose a match. The gap is the difference between the two highest probabilities in percentage points.
+2. Click Why this pick? Read the model’s estimated goals and compare the teams’ recent chances. Ask a classmate for a pick before revealing the result.
+3. Click Can I trust this forecast? This compares top picks in the same 10-percentage-point band using earlier dates only. Early in the season there may be few or no examples.
+4. Reveal the match result. To see the week’s biggest surprise, select the upset question and explicitly reveal it. It searches all matches that week even if a club filter is active.
+5. Open Expected vs. Actual. Pick a club and a week to compare points with the forecast. Finish on Model Scorecard to show performance across all 380 fixtures, including draws the model missed.
+6. Use Fixture Simulator for an audience-chosen hypothetical matchup. It is not a live forecast.
+
+Methods: each team's previous 5 and 10 EPL matches supply mean points, goals for/against, xG for/against, shots and shots on target. Also included: season points/game, season goal difference/game and EPL rest (capped at 30 days). Extended candidates add prior Elo, points/game in the last five at the same venue type, and points/game from the last five meetings. Rolling form can cross seasons; season features reset. Missing inputs use training medians. Elo starts at 1500, uses a 60-point home bonus and K=20. Goal model fits independent Poisson home and away goal rates, combining them into three outcome probabilities. Independence is an approximation. No odds or lineups are used as inputs.
+
+The supplied model is frozen after 2023/24. Historical form updates before each replay; teams' own match results are never used to predict that match. Simulator dates start after model training. No live data feed. Verified lineup effects were not tested in this release. Clubs appearing only after 2024/25 are not supported. For a genuinely new test, record predictions before kickoff and score them later.
+
+Optional: upload the separate Matchday_Lab_Colab notebook to Colab. Follow its cells to rebuild the app from your original workbook. Retraining is NOT needed to run this ZIP.
